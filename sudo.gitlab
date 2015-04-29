@@ -1,0 +1,2 @@
+Defaults:nagios !requiretty, visiblepw
+nagios  ALL=(ALL)       NOPASSWD: /usr/bin/gitlab-ctl status

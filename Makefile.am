@@ -13,16 +13,15 @@
 
 # directories
 SRC_PLUGIN=@srcdir@/plugin-dir
-SRC_CONTRIB=@srcdir@/contrib
 
 PACKAGE=@PACKAGE@
 VERSION=@VERSION@
+NAGIOS_USER=@nagios_user@
 
 distdir=$(PACKAGE)-$(VERSION)
-DIST_COMMON=config.sub configure.in configure NEWS INSTALL missing aclocal.m4 install-sh Makefile.am ChangeLog LICENSE README AUTHORS Makefile.in config.guess
-PLUGIN_COMMON=$(SRC_PLUGIN)/Makefile.am $(SRC_PLUGIN)/Makefile.in $(SRC_PLUGIN)/check_gitlab.pl
-CONTRIB_COMMON=$(SRC_CONTRIB)/Makefile.am $(SRC_CONTRIB)/Makefile.in $(SRC_CONTRIB)/check_gitlab.php
-DISTFILES=$(DIST_COMMON) $(PLUGIN_COMMON) $(CONTRIB_COMMON)
+DIST_COMMON=config.sub configure.in configure NEWS INSTALL missing aclocal.m4 install-sh Makefile.am ChangeLog LICENSE README AUTHORS Makefile.in config.guess sudo.gitlab
+PLUGIN_COMMON=$(SRC_PLUGIN)/Makefile.am $(SRC_PLUGIN)/Makefile.in $(SRC_PLUGIN)/check_gitlab.sh
+DISTFILES=$(DIST_COMMON) $(PLUGIN_COMMON)
 
 # compiler settings
 prefix=@prefix@
@@ -32,14 +31,16 @@ INSTALL_OPTS=@INSTALL_OPTS@
 # Compile
 all:
 	cd $(SRC_PLUGIN) && $(MAKE) $@
-	cd $(SRC_CONTRIB) && $(MAKE) $@
+	cp sudo.gitlab sudo.gitlab.tmp
+	sed -i 's!nagios!$(NAGIOS_USER)!' sudo.gitlab.tmp
+	cp -f sudo.gitlab.tmp sudo.gitlab
+	rm sudo.gitlab.tmp
 
 # Install
 install:
 	cd $(SRC_PLUGIN) && $(MAKE) $@
-	cd $(SRC_CONTRIB) && $(MAKE) $@
+	$(INSTALL) -D -m 644 $(INSTALL_OPTS) sudo.gitlab $(DESTDIR)/etc/sudoers.d/check_gitlab
 
 # Cleanup
 clean:
 	cd $(SRC_PLUGIN) && $(MAKE) $@
-	cd $(SRC_CONTRIB) && $(MAKE) $@

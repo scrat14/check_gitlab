@@ -19,11 +19,7 @@ libexec_SCRIPTS=check_gitlab
 
 # compile
 check_gitlab:
-	sed '1,2d' check_gitlab.pl > check_gitlab.tmp
-	echo "#!@PERL@ -w" > $(libexec_SCRIPTS)
-	echo "# nagios: -epn" >> $(libexec_SCRIPTS)
-	cat check_gitlab.tmp >> $(libexec_SCRIPTS)
-	rm -f check_gitlab.tmp
+	mv $(libexec_SCRIPTS).sh $(libexec_SCRIPTS)
 
 # install
 install:
