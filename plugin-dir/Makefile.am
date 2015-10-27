@@ -19,7 +19,7 @@ libexec_SCRIPTS=check_gitlab
 
 # compile
 check_gitlab:
-	mv $(libexec_SCRIPTS).sh $(libexec_SCRIPTS)
+	cp $(libexec_SCRIPTS).sh $(libexec_SCRIPTS)
 
 # install
 install:

@@ -39,7 +39,7 @@ all:
 # Install
 install:
 	cd $(SRC_PLUGIN) && $(MAKE) $@
-	$(INSTALL) -D -m 644 $(INSTALL_OPTS) sudo.gitlab $(DESTDIR)/etc/sudoers.d/check_gitlab
+	$(INSTALL) -D -m 440 $(INSTALL_OPTS) -o root -g root sudo.gitlab $(DESTDIR)/etc/sudoers.d/check_gitlab
 
 # Cleanup
 clean:

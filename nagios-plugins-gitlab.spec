@@ -39,12 +39,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(0755,nagios,nagios)
 %{_libdir}/nagios/plugins/check_gitlab
-%{_sysconfdir}/sudoers.d/check_gitlab
+%attr(0440,root,root) %{_sysconfdir}/sudoers.d/check_gitlab
 %doc README INSTALL NEWS ChangeLog LICENSE
 
 
 
 %changelog
+* Tue Oct 27 2015 Rene Koch <rkoch@rk-it.at> 1.0-2
+- Fixed permissions for sudoers file.
+
 * Wed Apr 29 2015 Rene Koch <rkoch@rk-it.at> 1.0-1
 - Initial build.
 
