@@ -15,13 +15,13 @@
 
 
 AC_PREREQ([2.63])
-AC_INIT([check_gitlab], [1.0], [rkoch@rk-it.at])
+AC_INIT([check_gitlab], [1.0.1], [rkoch@rk-it.at])
 AM_INIT_AUTOMAKE
 
 AC_PREFIX_DEFAULT(/usr/local/nagios/libexec)
 PKG_NAME="check_gitlab"
-PKG_VERSION="1.0"
-PKG_REL_DATE="2015-04-29"
+PKG_VERSION="1.0.1"
+PKG_REL_DATE="2015-10-27"
 
 # Figure out how to invoke "install" and what install options to use
 AC_PROG_INSTALL

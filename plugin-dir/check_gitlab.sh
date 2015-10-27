@@ -27,6 +27,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Changelog:
+# * 1.0.1 - Tue Oct 27 2015 - Rene Koch <rkoch@rk-it.at>
+# - Fixed permissions for sudoers file.
 # * 1.0.0 - Wed Apr 29 2015 - René Koch <rkoch@rk-it.at>
 # - This is the first release of new plugin check_gitlab
 
@@ -36,7 +38,7 @@ SUDO="/usr/bin/sudo"
 
 # Variables
 PROG="check_gitlab"
-VERSION="1.0"
+VERSION="1.0.1"
 VERBOSE=0
 STATUS=3
 

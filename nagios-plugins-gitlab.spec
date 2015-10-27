@@ -1,5 +1,5 @@
 Name:		nagios-plugins-gitlab
-Version:	1.0
+Version:	1.0.1
 Release:	1%{?dist}
 Summary:	Gitlab plugin for Icinga/Nagios
 
@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Tue Oct 27 2015 Rene Koch <rkoch@rk-it.at> 1.0-2
+* Tue Oct 27 2015 Rene Koch <rkoch@rk-it.at> 1.0.1-1
 - Fixed permissions for sudoers file.
 
 * Wed Apr 29 2015 Rene Koch <rkoch@rk-it.at> 1.0-1
